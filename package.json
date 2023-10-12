@@ -1,6 +1,5 @@
 {
   "name": "root",
-  "private": true,
   "scripts": {
     "lint": "npm-run-all lint:*",
     "lint:packages": "npm run lint --workspace=packages --if-present",
