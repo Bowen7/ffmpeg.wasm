@@ -162,11 +162,6 @@ RUN bash -x /src/build.sh \
       --enable-muxer=mp4 \
       --enable-encoder=libx264 \
       --enable-encoder=aac \
-      --enable-libavformat \
-      --enable-libavcodec \
-      --enable-libavutil \
-      --enable-libswscale \
-      --enable-libswresample\
       --enable-gpl \
       --enable-libx264
 
