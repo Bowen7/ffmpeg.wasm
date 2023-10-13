@@ -151,20 +151,24 @@ COPY --from=zimg-builder $INSTALL_DIR $INSTALL_DIR
 FROM ffmpeg-base AS ffmpeg-builder
 COPY build/ffmpeg.sh /src/build.sh
 RUN bash -x /src/build.sh \
+      --disable-everything \
+      --enable-runtime-cpudetect \
+      --disable-asm \
+      --disable-doc \
+      --disable-ffplay \
+      --disable-ffprobe \
+      --enable-protocol=file \
+      --enable-demuxer=image2 \
+      --enable-muxer=mp4 \
+      --enable-encoder=libx264 \
+      --enable-encoder=aac \
+      --enable-libavformat \
+      --enable-libavcodec \
+      --enable-libavutil \
+      --enable-libswscale \
+      --enable-libswresample\
       --enable-gpl \
-      --enable-libx264 \
-      --enable-libx265 \
-      --enable-libvpx \
-      --enable-libmp3lame \
-      --enable-libtheora \
-      --enable-libvorbis \
-      --enable-libopus \
-      --enable-zlib \
-      --enable-libwebp \
-      --enable-libfreetype \
-      --enable-libfribidi \
-      --enable-libass \
-      --enable-libzimg 
+      --enable-libx264
 
 # Build ffmpeg.wasm
 FROM ffmpeg-builder AS ffmpeg-wasm-builder
